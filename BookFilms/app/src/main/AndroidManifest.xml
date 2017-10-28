@@ -19,7 +19,9 @@
         <activity android:name=".StartActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MovieInfoActivity" />
-        <activity android:name=".BookingTicketActivity"></activity>
+        <activity android:name=".BookingTicketActivity" />
+        <activity android:name=".UpdateProfileActivity" />
+        <activity android:name=".ConfirmInfoActivity"></activity>
     </application>
 
 </manifest>

@@ -43,8 +43,8 @@
 
     <Spinner
         android:id="@+id/spinTime"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="24dp"
         android:layout_marginRight="60dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
@@ -54,8 +54,8 @@
 
     <Spinner
         android:id="@+id/spinSeat"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="26dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -65,8 +65,8 @@
 
     <Spinner
         android:id="@+id/spinCinema"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="141dp"
+        android:layout_height="26dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
@@ -114,8 +114,8 @@
 
     <TextView
         android:id="@+id/textCinema"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
+        android:layout_width="57dp"
+        android:layout_height="14dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="16dp"
         android:hint="Cinema"
@@ -124,8 +124,8 @@
 
     <TextView
         android:id="@+id/textTime"
-        android:layout_width="120dp"
-        android:layout_height="18dp"
+        android:layout_width="56dp"
+        android:layout_height="0dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="16dp"
         android:hint="Time"
@@ -134,8 +134,8 @@
 
     <TextView
         android:id="@+id/textSeat"
-        android:layout_width="120dp"
-        android:layout_height="16dp"
+        android:layout_width="54dp"
+        android:layout_height="17dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="16dp"
         android:hint="Seats"
@@ -154,8 +154,8 @@
 
     <TextView
         android:id="@+id/textDates"
-        android:layout_width="120dp"
-        android:layout_height="18dp"
+        android:layout_width="39dp"
+        android:layout_height="20dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:hint="Dates"
@@ -164,12 +164,13 @@
 
     <Spinner
         android:id="@+id/spinDate"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="156dp"
+        android:layout_height="26dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toEndOf="@+id/textDates"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 

@@ -1,5 +1,6 @@
 package com.darkwinter.bookfilms;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
@@ -51,8 +52,10 @@ public class BookingTicketActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String tmpDate = adapterView.getItemAtPosition(i).toString();
-                dates.setText(tmpDate);
                 loadCinemasFromFirebase(tmpDate);
+                clearTime();
+                //loadSlotFirebase(Cinemas.getSelectedItem().toString(), film.getId(), tmpDate);
+                //loadSeatsFromFirebase();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -63,8 +66,9 @@ public class BookingTicketActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String cinema = adapterView.getItemAtPosition(i).toString();
-                cine.setText(cinema);
-                loadSlotFirebase(cinema, film.getId(), dates.getText().toString());
+                loadSlotFirebase(cinema, film.getId(), Dates.getSelectedItem().toString());
+                notifychange();
+                //loadSeatsFromFirebase();
             }
 
             @Override
@@ -76,33 +80,17 @@ public class BookingTicketActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String slot1 =adapterView.getItemAtPosition(i).toString();
-                slot.setText(slot1);
-                Room = loadRoomFirebase(cine.getText().toString(),film.getId(),dates.getText().toString(),slot1);
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Toast.makeText(getApplicationContext(),"====room"+Room+""+cine.getText()+", "+film.getId()+","+dates.getText()+"+"+slot1,Toast.LENGTH_LONG).show();
-                //loadSeatsFromFirebase(room , dates.getText().toString(), slot1);
+                loadSeatsFromFirebase();
+                clearSeat();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-        Seats.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                seat.setText(adapterView.getItemAtPosition(i).toString());
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
     }
+
     private void loadCinemasFromFirebase(String date){
         ListCinemas.clear();
         mFilmRef = FirebaseDatabase.getInstance().getReference().child("Films").child(film.getId()).child("Dates").child(date);
@@ -111,66 +99,20 @@ public class BookingTicketActivity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 String Cinema = dataSnapshot.getKey();
                 ListCinemas.add(Cinema);
-                CinemaAdater.notifyDataSetChanged();
-                SlotAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-    }
-
-    private void loadSeatsFromFirebase(String room, final String date, String time){
-        ListSeats.clear();
-        mRoomRef = FirebaseDatabase.getInstance().getReference()
-                .child("Rooms").child(room)
-                .child("Dates").child(date).child(time);
-        mRoomRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                String isEmp = dataSnapshot.getValue().toString();
-                if (isEmp.equals("1")){
-                    String seat = dataSnapshot.getKey().toString();
-                    ListSeats.add(seat);
-                    notifychange();
-                }
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                String value = dataSnapshot.getKey().toString();
-                if(value.equals("0")){
-                    ListSeats.remove(dataSnapshot.getKey().toString());
-                    notifychange();
-                }
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                ListSeats.remove(dataSnapshot.getKey().toString());
                 notifychange();
             }
 
             @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
             }
@@ -180,21 +122,56 @@ public class BookingTicketActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
-    private String loadRoomFirebase(String cine, String Film, String date, String time){
-        final String[] room = {""};
+    private void loadSeatsFromFirebase() {
         mCineRef = FirebaseDatabase.getInstance().getReference()
-                .child("Cinemas").child(cine)
-                .child("Films").child(Film)
-                .child(date).child(time);
+                .child("Cinemas").child(Cinemas.getSelectedItem().toString())
+                .child("Films").child(film.getId())
+                .child(Dates.getSelectedItem().toString()).child(Times.getSelectedItem().toString());
+
         mCineRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                room[0] = dataSnapshot.getKey();
-                Toast.makeText(getApplicationContext(),"====vb"+ room[0],Toast.LENGTH_LONG).show();
-                notifychange();
+                Room = dataSnapshot.getKey();
+                mRoomRef = FirebaseDatabase.getInstance().getReference()
+                        .child("Roms").child(Room).child("Dates")
+                        .child(Dates.getSelectedItem().toString()).child(Times.getSelectedItem().toString());
+                mRoomRef.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        String isEmp = dataSnapshot.getValue().toString();
+                        String seat = dataSnapshot.getKey().toString();
+                        if(isEmp.equals("1")){
+                            ListSeats.add(seat);
+                            SeatAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
+
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
@@ -215,7 +192,6 @@ public class BookingTicketActivity extends AppCompatActivity {
 
             }
         });
-        return room[0];
     }
 
     private class AsyncLoadDatesFirebase extends AsyncTask<Void, Void, Void> {
@@ -304,7 +280,15 @@ public class BookingTicketActivity extends AppCompatActivity {
 
     }
 
+    private void clearTime(){
+        ListSlots.clear();
+        notifychange();
+    }
 
+    private void clearSeat(){
+        ListSeats.clear();
+        notifychange();
+    }
 
     private void setupWidget(){
         Cinemas = (Spinner) findViewById(R.id.spinCinema);
@@ -316,7 +300,7 @@ public class BookingTicketActivity extends AppCompatActivity {
         cine = (TextView)findViewById(R.id.textCinema);
         seat = (TextView)findViewById(R.id.textSeat);
         slot = (TextView)findViewById(R.id.textTime);
-
+        Booking = (Button) findViewById(R.id.btnBookAction);
         DateAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ListDates);
         DateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Dates.setAdapter(DateAdapter);
@@ -332,6 +316,27 @@ public class BookingTicketActivity extends AppCompatActivity {
         SeatAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ListSeats);
         SeatAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Seats.setAdapter(SeatAdapter);
+
+        Booking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ConfirmIntent;
+                ConfirmIntent = new Intent(BookingTicketActivity.this, ConfirmInfoActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("Film", film.getId());
+                bundle.putString("Date", Dates.getSelectedItem().toString());
+                bundle.putString("Cinema", Cinemas.getSelectedItem().toString());
+                bundle.putString("Slot", Times.getSelectedItem().toString());
+                bundle.putString("Room", Room);
+                bundle.putString("Seat", Seats.getSelectedItem().toString());
+                ConfirmIntent.putExtra("infoticket",bundle );
+                startActivity(ConfirmIntent);
+                finish();
+
+
+            }
+        });
+
     }
     private void notifychange(){
         DateAdapter.notifyDataSetChanged();
@@ -339,4 +344,7 @@ public class BookingTicketActivity extends AppCompatActivity {
         SlotAdapter.notifyDataSetChanged();
         SeatAdapter.notifyDataSetChanged();
     }
+
+
+
 }
