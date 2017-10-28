@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="movie_eng_name">
+        <item>
+            <string>Geo Storm</string>
+        </item>
+        <item>
+            <string>Blade Runner 2049</string>
+        </item>
+        <item>
+            <string>The Foreigner</string>
+        </item>
+        <item>
+            <string>Breathe</string>
+        </item>
+        <item>
+            <string>The invisible</string>
+        </item>
+    </array>
+
+    <integer-array name="movie_poster">
+        <item>@drawable/geo_storm</item>
+        <item>@drawable/blade_runner</item>
+        <item>@drawable/foreigner</item>
+        <item>@drawable/breathe</item>
+        <item>@drawable/invisible</item>
+    </integer-array>
+
+    <array name="movie_descrip">
+        <item>
+            <string>
+                Bộ phim nói về viễn tưởng tương lại khi sự biến đổi khí hậu thảm khốc gây nguy hiểm cho sự sống còn của Trái Đất, các chính phủ trên thế giới đã thống nhất với nhau và tạo ra một mạng lưới các vệ tinh. Mỗi khi muốn thay đổi thời tiết thì các vệ tinh này sẽ tác động lên mây, gió của bầu khí quyển Trái đấtt và tạo ra hiệu ứng như ý muốn. Nhưng những việc này làm trái với thiên nhiên của tạo hóa đều có thể gây ra những hậu quả nghiêm trọng, những vệ tinh thời tiết này dần bị hư hỏng và gây ra hàng loạt thảm họa thiên nhiên trên khắp thế giới.
+            </string>
+        </item>
+        <item>
+            <string>
+                35 năm sau ngày phần đầu tiên ra mắt, Blade Runner trở lại với những gương mặt mới, câu chuyện mới, đầy hứa hẹn vẫn sẽ giữ được cái “chất” khiến thương hiệu này trở thành tác phẩm kinh điển trong lịch sử điện ảnh. Nhà sản xuất vừa tung ra trailer đầu tiên của phim do bộ đôi Ridley Scott - sản xuất và Denis Villeneuve - đạo diễn với vô số tình tiết bất ngờ có thể hứa hẹn đây là sẽ bom tấn đáng để chúng ta ra rạp thưởng thức.
+            </string>
+        </item>
+        <item>
+            <string>
+            The Foreigner đánh dấu sự trở lại của Thành Long trong một dự án bom tấn mang tầm Hollywood, kể từ sau Kung Fu Panda 3 (tham gia với vai trò lồng tiếng). Không giống với những vai diễn hài hước trong thời gian vừa qua, nhân vật của ông lần này có sự chuyển biến tâm lý phức tạp. Ông không còn gì để mất, vì thứ quý giá nhất cuộc đời – cô con gái – đã bị bọn khủng bố sát hại. Trong trailer, câu thoại “Tại sao là con gái tôi?” của Thành Long thực sự câu xúc động mạnh cho khán giả. Từ một người cha giàu tình thương yêu, ông biến thành một tên tội phạm nguy hiểm để đòi lại công bằng cho người thân duy nhất của mình.
+            </string>
+        </item>
+        <item>
+            <string>
+                Dựa trên một câu chuyện có thật, Breathe kể về cuộc đời của Robin Cavendish (Andrew Garfield), một chàng trai trẻ năng động, lạc quan và yêu đời. Tuy nhiên, cuộc đời của Robin nhanh chóng sụp đổ khi căn bệnh bại liệt bộc phát và anh chỉ còn sống được thêm vài tháng nữa. Bất chấp tất cả những lời khuyên của các bác sĩ, người vợ Diana (Claire Foy) quyết định đưa anh về nhà tự tay chăm sóc. Tình yêu giống như liều thuốc duy nhất đã giúp Robin vượt lên được khuyết tật của bản thân, sống một cuộc đời hạnh phúc và trở thành nhà hoạt động vì quyền lợi của những bệnh nhân bại liệt.
+            </string>
+        </item>
+        <item>
+            <string>
+                Sát Thủ Vô Hình là bộ phim ấn tượng của Tây Ban Nha trong năm 2017 gây tiếng vang lớn trên thế giới với hàng loạt những bất ngờ của bất ngờ, làm người xem không dự đoán được cái kết - bắt họ phải ngồi tới cùng để biết hung thủ thật sự. Bộ phim kể về Adrián Doria - một doanh nhân trẻ tài năng, bị vướng vào một vụ án giết người trong phòng kín. Để cứu vãn sự nghiệp và cuộc sống cá nhân đang trên đà đổ nát, Doria phải thuê Virginia Goodman, một luật sư uy tín để bào chữa cho mình. Tuy nhiên, sau 180 phút lật lại quá khứ trong căn phòng ngột ngạt, một sự thật ghê rợn khác dần được phơi bày.
+            </string>
+        </item>
+    </array>
+
+    <array name="movie_trailer">
+        <item>
+            <string>
+                www.youtube.com/watch?v=EuOlYPSEzSc
+            </string>
+        </item>
+        <item>
+            <string>
+                www.youtube.com/watch?v=gCcx85zbxz4
+            </string><!--blade runner-->
+        </item>
+        <item>
+            <string>
+                www.youtube.com/watch?v=LmImJ6ZUiqE
+            </string><!--foreigner-->
+        </item>
+        <item>
+            <string>
+                www.youtube.com/watch?v=58BqQbOHaZs
+            </string><!--breathe-->
+        </item>
+        <item>
+            <string>
+                www.youtube.com/watch?v=xdJBpajrOh8
+            </string><!--invinciple-->
+        </item>
+    </array>
+
+
+    <!-- Old code -->
+    <array name="eng_name">
+        <item>
+            <string>U.S.A</string>
+        </item>
+        <item>
+            <string>Vietnam</string>
+        </item>
+        <item>
+            <string>England</string>
+        </item>
+        <item>
+            <string>Japan</string>
+        </item>
+        <item>
+            <string>Korea</string>
+        </item>
+    </array>
+
+    <array name="jap_name">
+        <item>
+            <string>アメリカ</string>
+        </item>
+        <item>
+            <string>ベトナム</string>
+        </item>
+        <item>
+            <string>イギリス</string>
+        </item>
+        <item>
+            <string>日本</string>
+        </item>
+        <item>
+            <string>かんこく</string>
+        </item>
+    </array>
+
+    <integer-array name="country_flag">
+        <item>@drawable/usa</item>
+        <item>@drawable/vn</item>
+        <item>@drawable/eng</item>
+        <item>@drawable/jap</item>
+        <item>@drawable/korea</item>
+    </integer-array>
+</resources>
