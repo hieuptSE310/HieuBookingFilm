@@ -1,7 +1,12 @@
 package com.darkwinter.bookfilms;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +30,7 @@ public class ConfirmInfoActivity extends AppCompatActivity {
     private Button Confirm;
     private DatabaseReference mUserRef;
     private DatabaseReference mRoomRef;
+    private int notiID;
     private FirebaseAuth mAuth;
 
     @Override
@@ -86,4 +92,17 @@ public class ConfirmInfoActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void AlarmClock(){
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this).setSmallIcon(R.drawable.breathe).setContentTitle("Have message").setContentText("ahihi");
+        Intent resultIntent = new Intent(this, MainActivity.class);
+        PendingIntent mPendingIntent = PendingIntent.getActivity(this, 0, resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(mPendingIntent);
+        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        mBuilder.setSound(uri);
+        notiID = 113;
+        NotificationManager mNofityMn = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNofityMn.notify(notiID, mBuilder.build());
+    }
+
 }
