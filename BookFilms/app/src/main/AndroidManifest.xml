@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".AlarmReceiver" />
+
+        <service android:name=".RingRing"
+            android:enabled="true">
+        </service>
+
         <!--Login activity-->
         <activity android:name=".LoginActivity"
             android:label="Login"
