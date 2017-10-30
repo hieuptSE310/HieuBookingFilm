@@ -52,7 +52,7 @@ public class StartActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mToolbar = findViewById(R.id.main_tool_bar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Booking");
+        getSupportActionBar().setTitle("Movie booking app");
         swipeActivity = new SwipeActivity(this, ListofFilms);
         context = this.getApplicationContext();
         viewPager = findViewById(R.id.view_paper);

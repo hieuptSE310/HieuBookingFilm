@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.darkwinter.bookfilms">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
+        android:label="Dictionary SE61750"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -14,14 +15,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".StartActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".MovieInfoActivity" />
-        <activity android:name=".BookingTicketActivity" />
-        <activity android:name=".UpdateProfileActivity" />
-        <activity android:name=".ConfirmInfoActivity"></activity>
+        <!--Login activity-->
+        <activity android:name=".LoginActivity"
+            android:label="Login"
+            android:theme="@style/AppTheme.ActionBar"/>
+        <!--Regist activity-->
+        <activity android:name=".RegisterActivity"
+            android:label="Register"
+            android:theme="@style/AppTheme.ActionBar"/>
+        <!--Start Activity activity-->
+        <activity android:name=".StartActivity"
+            android:label="Login"
+            android:theme="@style/AppTheme.ActionBar"/>
+        <!--Profile activity-->
+        <activity android:name=".ProfileActivity"
+            android:label="Profile"
+            android:theme="@style/AppTheme.ActionBar"/>
+        <!--Movie info activity-->
+        <activity android:name=".MovieInfoActivity"
+            android:label="Movie Information"
+            android:theme="@style/AppTheme.ActionBar"/>
+        <!--Booking ticket activity-->
+        <activity android:name=".BookingTicketActivity"
+            android:label="Booking"
+            android:theme="@style/AppTheme.ActionBar"/>
+        <!--Update profile activity-->
+        <activity android:name=".UpdateProfileActivity"
+            android:label="Update profile"
+            android:theme="@style/AppTheme.ActionBar"/>
+        <!--Confirm activity-->
+        <activity android:name=".ConfirmInfoActivity"
+            android:label="Confirmation"
+            android:theme="@style/AppTheme.ActionBar"/>
     </application>
 
 </manifest>
