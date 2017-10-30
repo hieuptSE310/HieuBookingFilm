@@ -5,25 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.darkwinter.bookfilms.BookingTicketActivity">
+
     <TextView
         android:id="@+id/textView11"
         android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="15dp"
         android:text="Seat"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTime" />
+        app:layout_constraintTop_toBottomOf="@+id/spinTime" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="15dp"
         android:text="Cinema"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textDates" />
+        app:layout_constraintTop_toBottomOf="@+id/spinDate" />
 
     <TextView
         android:id="@+id/textView8"
@@ -43,36 +44,42 @@
 
     <Spinner
         android:id="@+id/spinTime"
-        android:layout_width="140dp"
-        android:layout_height="24dp"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
         android:layout_marginRight="60dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:popupBackground="@color/colorPrimary"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textTime"
-        app:layout_constraintTop_toBottomOf="@+id/textCinema" />
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/spinCinema" />
 
     <Spinner
         android:id="@+id/spinSeat"
         android:layout_width="150dp"
-        android:layout_height="26dp"
+        android:layout_height="25dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:popupBackground="@color/colorPrimary"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textSeat"
-        app:layout_constraintTop_toBottomOf="@+id/textTime" />
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/spinTime" />
 
     <Spinner
         android:id="@+id/spinCinema"
-        android:layout_width="141dp"
-        android:layout_height="26dp"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:popupBackground="@color/colorPrimary"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textCinema"
-        app:layout_constraintTop_toBottomOf="@+id/textDates" />
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/spinDate" />
 
     <Button
         android:id="@+id/btnBookAction"
@@ -82,23 +89,23 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
         android:text="Book Ticket"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSeat"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintTop_toBottomOf="@+id/spinSeat" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="15dp"
         android:text="Time"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCinema" />
+        app:layout_constraintTop_toBottomOf="@+id/spinCinema" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -106,72 +113,34 @@
         android:layout_height="220dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:srcCompat="@drawable/cinema" />
 
     <TextView
-        android:id="@+id/textCinema"
-        android:layout_width="57dp"
-        android:layout_height="14dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="16dp"
-        android:hint="Cinema"
-        app:layout_constraintLeft_toRightOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textDates" />
-
-    <TextView
-        android:id="@+id/textTime"
-        android:layout_width="56dp"
-        android:layout_height="0dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="16dp"
-        android:hint="Time"
-        app:layout_constraintLeft_toRightOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textCinema" />
-
-    <TextView
-        android:id="@+id/textSeat"
-        android:layout_width="54dp"
-        android:layout_height="17dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="16dp"
-        android:hint="Seats"
-        app:layout_constraintLeft_toRightOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textTime" />
-
-    <TextView
         android:id="@+id/textView12"
         android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="16dp"
         android:text="Dates"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <TextView
-        android:id="@+id/textDates"
-        android:layout_width="39dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:hint="Dates"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
     <Spinner
         android:id="@+id/spinDate"
-        android:layout_width="156dp"
-        android:layout_height="26dp"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:popupBackground="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toEndOf="@+id/textDates"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </android.support.constraint.ConstraintLayout>

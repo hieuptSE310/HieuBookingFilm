@@ -292,11 +292,7 @@ public class BookingTicketActivity extends AppCompatActivity {
         Seats = (Spinner)findViewById(R.id.spinSeat);
         Times = (Spinner)findViewById(R.id.spinTime);
         Dates = (Spinner) findViewById(R.id.spinDate);
-        dates = (TextView) findViewById(R.id.textDates);
         Booking = (Button) findViewById(R.id.btnBookAction);
-        cine = (TextView)findViewById(R.id.textCinema);
-        seat = (TextView)findViewById(R.id.textSeat);
-        slot = (TextView)findViewById(R.id.textTime);
         Booking = (Button) findViewById(R.id.btnBookAction);
         DateAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ListDates);
         DateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
