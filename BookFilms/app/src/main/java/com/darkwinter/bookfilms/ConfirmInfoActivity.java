@@ -1,10 +1,14 @@
 package com.darkwinter.bookfilms;
 
+import android.annotation.TargetApi;
+import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class ConfirmInfoActivity extends AppCompatActivity {
@@ -32,6 +37,11 @@ public class ConfirmInfoActivity extends AppCompatActivity {
     private DatabaseReference mRoomRef;
     private int notiID;
     private FirebaseAuth mAuth;
+    AlarmManager alarmManager;
+
+    private PendingIntent pending_intent;
+    Context context;
+    ConfirmInfoActivity inst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +67,11 @@ public class ConfirmInfoActivity extends AppCompatActivity {
         Seat = (TextView)findViewById(R.id.txtSeat);
         Confirm = (Button)findViewById(R.id.btnConfirm);
         Confirm.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
                 updateUserTicket();
+                AlarmClock();
             }
         });
     }
@@ -92,17 +104,47 @@ public class ConfirmInfoActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        inst = this;
+    }
 
     public void AlarmClock(){
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this).setSmallIcon(R.drawable.breathe).setContentTitle("Have message").setContentText("ahihi");
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this).setSmallIcon(R.drawable.usa).setContentTitle("Have message").setContentText("ahihi").setTimeoutAfter(1000);
         Intent resultIntent = new Intent(this, MainActivity.class);
-        PendingIntent mPendingIntent = PendingIntent.getActivity(this, 0, resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent mPendingIntent = PendingIntent.getActivity(this, 0,resultIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+
         mBuilder.setContentIntent(mPendingIntent);
+
         Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         mBuilder.setSound(uri);
+
         notiID = 113;
+
         NotificationManager mNofityMn = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNofityMn.notify(notiID, mBuilder.build());
+
+        // Push notification after 45 minutes
+        this.context = this;
+
+        final Intent myIntent = new Intent(this.context, AlarmReceiver.class);
+        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        final Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.SECOND, 3);
+        //int hour = Calendar.HOUR;
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutes = calendar.get(Calendar.MINUTE);
+        //int minute = Calendar.MINUTE  + 2;
+        Log.e("MyActivity", "In the receiver with " + hours + " and " + minutes);
+        calendar.set(Calendar.HOUR_OF_DAY, hours);
+        calendar.set(Calendar.MINUTE, minutes);
+        myIntent.putExtra("extra", "yes");
+        pending_intent = PendingIntent.getBroadcast(ConfirmInfoActivity.this, 0, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
     }
+
+
 
 }
