@@ -40,14 +40,10 @@ public class SwipeActivity extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = layoutInflater.inflate(R.layout.activity_swipe, container,false);
-        //image = itemView.getResources().obtainTypedArray(R.array.movie_poster);
-        //enName = itemView.getResources().getStringArray(R.array.movie_eng_name);
-//        japName = itemView.getResources().getStringArray(R.array.jap_name);
         //set layout*/
         ImageView imageView = (ImageView) itemView.findViewById(R.id.image_view);
         TextView textView = (TextView) itemView.findViewById(R.id.text_view);
         //set data every slide
-        //imageView.setImageResource(image.getResourceId(position,-1));
         Picasso.with(itemView.getContext()).load(enName.get(position).getImage()).into(imageView);
         textView.setText(enName.get(position).getName());
         container.addView(itemView);

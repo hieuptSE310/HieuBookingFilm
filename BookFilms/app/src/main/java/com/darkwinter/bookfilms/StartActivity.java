@@ -50,10 +50,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-        //mToolbar = (Toolbar) findViewById();
         mToolbar = findViewById(R.id.main_tool_bar);
-//        mToolbar.setTitle("Booking");
-//        Toast.makeText(MainActivity.this, R.id.main_tool_bar+"", Toast.LENGTH_LONG).show();
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Booking");
         swipeActivity = new SwipeActivity(this, ListofFilms);
@@ -63,7 +60,6 @@ public class StartActivity extends AppCompatActivity {
         //Show slider
         array_movies = viewPager.getResources().getStringArray(R.array.movie_eng_name);
         swipeActivity = new SwipeActivity(this, ListofFilms);
-        //swipeAdapter = new SwipeAdapter(this, array_movies);
         viewPager.setAdapter(swipeActivity);
         //set color array for dots and dots array size, must be put before call addBottomDots to prevent null
         colorsInactive = viewPager.getResources().getIntArray(R.array.array_dot_inactive);
@@ -219,8 +215,6 @@ public class StartActivity extends AppCompatActivity {
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
             int pos = viewPager.getCurrentItem();
-            //System.out.println(pos);//return the current item position
-            //System.out.println(array_movies[pos]);
             Intent info = new Intent(StartActivity.this, MovieInfoActivity.class);
             Films chose = ListofFilms.get(pos);
             info.putExtra("Film", chose);

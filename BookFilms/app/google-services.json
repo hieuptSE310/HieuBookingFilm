@@ -1,0 +1,239 @@
+{
+  "project_info": {
+    "project_number": "661292223902",
+    "firebase_url": "https://film-c2722.firebaseio.com",
+    "project_id": "film-c2722",
+    "storage_bucket": "film-c2722.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661292223902:android:1c4efcf700c55c02",
+        "android_client_info": {
+          "package_name": "com.darkwinter.demofirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661292223902-6pmibcfhnpe4u7hhb1h484ikpq5p3i5i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darkwinter.demofirebase",
+            "certificate_hash": "ab96312bef05b11b48b49ffdb5d3a5285a04a375"
+          }
+        },
+        {
+          "client_id": "661292223902-2s14v2ustm1vas32cqf2o0r8rco3loqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7OEwLjjllRJpkM-dJ76CSU84eYOM6NOU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661292223902-2s14v2ustm1vas32cqf2o0r8rco3loqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661292223902:android:b78d1a6b7ee95026",
+        "android_client_info": {
+          "package_name": "com.example.anhnh.sliderdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661292223902-b2u6ub614hmb9ikqlmselvtroc4a0uu5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.anhnh.sliderdemo",
+            "certificate_hash": "49bc2dd90add0d90602d9d80bec1ecf00dc78334"
+          }
+        },
+        {
+          "client_id": "661292223902-in3q8rde6njklqp9b6fi2brb2257q7r7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.anhnh.sliderdemo",
+            "certificate_hash": "ab96312bef05b11b48b49ffdb5d3a5285a04a375"
+          }
+        },
+        {
+          "client_id": "661292223902-2s14v2ustm1vas32cqf2o0r8rco3loqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7OEwLjjllRJpkM-dJ76CSU84eYOM6NOU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661292223902-2s14v2ustm1vas32cqf2o0r8rco3loqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661292223902:android:4898d44edbeac702",
+        "android_client_info": {
+          "package_name": "com.darkwinter.demofirebase3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661292223902-v8du68qlcekm7j6icnffcsabmbo535oo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darkwinter.demofirebase3",
+            "certificate_hash": "ab96312bef05b11b48b49ffdb5d3a5285a04a375"
+          }
+        },
+        {
+          "client_id": "661292223902-2s14v2ustm1vas32cqf2o0r8rco3loqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7OEwLjjllRJpkM-dJ76CSU84eYOM6NOU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661292223902-2s14v2ustm1vas32cqf2o0r8rco3loqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661292223902:android:51c70b74d96d42c0",
+        "android_client_info": {
+          "package_name": "com.darkwinter.bookfilm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661292223902-j8a274tb2m84o6ipqi2fqoiumsu7t83n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darkwinter.bookfilm",
+            "certificate_hash": "ab96312bef05b11b48b49ffdb5d3a5285a04a375"
+          }
+        },
+        {
+          "client_id": "661292223902-2s14v2ustm1vas32cqf2o0r8rco3loqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7OEwLjjllRJpkM-dJ76CSU84eYOM6NOU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661292223902-2s14v2ustm1vas32cqf2o0r8rco3loqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661292223902:android:ecb36daf6f732aca",
+        "android_client_info": {
+          "package_name": "com.darkwinter.bookfilms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661292223902-jsc8n7lnknlgpv945r5ou5uj1eckg327.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darkwinter.bookfilms",
+            "certificate_hash": "ab96312bef05b11b48b49ffdb5d3a5285a04a375"
+          }
+        },
+        {
+          "client_id": "661292223902-2s14v2ustm1vas32cqf2o0r8rco3loqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7OEwLjjllRJpkM-dJ76CSU84eYOM6NOU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661292223902-2s14v2ustm1vas32cqf2o0r8rco3loqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

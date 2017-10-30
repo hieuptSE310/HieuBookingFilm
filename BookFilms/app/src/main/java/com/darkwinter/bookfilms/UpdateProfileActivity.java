@@ -34,18 +34,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private String zipcode;
     private String password;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_update_profile);
         mAuth = FirebaseAuth.getInstance();
         addControls();
         Intent receiveIntent = getIntent();
         Bundle bundle = receiveIntent.getBundleExtra("Bundle");
-        //Toast.makeText(UpdateProfileActivity.this, , Toast.LENGTH_LONG).show();
         txtName.setText(bundle.getString("name"));
         txtEmail.setText(bundle.getString("email"));
         txtDOB.setText(bundle.getString("DOB"));
@@ -63,14 +59,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = currentUser.getUid();
                 databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
-                HashMap<String, String> userMap = new HashMap<>();
+                HashMap<String, Object> userMap = new HashMap<>();
                 userMap.put("email", email);
                 userMap.put("name", name);
                 userMap.put("CitizenID", zipcode );
                 userMap.put("DOB", DOB);
                 userMap.put("Phone number", phone);
                 userMap.put("Password", password);
-                databaseReference.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                databaseReference.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
@@ -80,7 +76,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
                         }
                     }
                 });
-
             }
         });
 

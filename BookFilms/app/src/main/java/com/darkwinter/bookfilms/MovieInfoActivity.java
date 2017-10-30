@@ -19,13 +19,12 @@ public class MovieInfoActivity extends AppCompatActivity {
 
 
     ImageView imageView;
-    //private TypedArray image;
     TextView movie_des, movieName;
     Button btnTrailer, btnBooking;
     private FirebaseAuth mAuth;
 
     private void setupRef(){
-        //mStorageRef = Fireb
+
     }
 
     private void setupWidget(){
@@ -44,7 +43,6 @@ public class MovieInfoActivity extends AppCompatActivity {
         setupWidget();
         final Films film = (Films) getIntent().getSerializableExtra("Film");
         //Set movie poster
-        //image = getResources().obtainTypedArray(R.array.movie_poster);
         Picasso.with(this.getApplicationContext()).load(film.getImage()).into(imageView);
         //Set movie description, name
         movie_des.setText(film.getDescrip());
@@ -54,15 +52,13 @@ public class MovieInfoActivity extends AppCompatActivity {
         btnTrailer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String url = getResources().getStringArray(R.array.movie_trailer)[pos];
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(film.getTrailer())));
             }
         });
         btnBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseUser currentUser = mAuth.getCurrentUser();
-                //Toast.makeText(MovieInfoActivity.this, currentUser.getUid(), Toast.LENGTH_LONG).show();
                 if(currentUser == null){
                     Intent loginIntent = new Intent(MovieInfoActivity.this, LoginActivity.class);
                     startActivity(loginIntent);
@@ -74,9 +70,5 @@ public class MovieInfoActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
     }
 }

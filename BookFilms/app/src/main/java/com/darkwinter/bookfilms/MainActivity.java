@@ -214,8 +214,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
             int pos = viewPager.getCurrentItem();
-            //System.out.println(pos);//return the current item position
-            //System.out.println(array_movies[pos]);
             Intent info = new Intent(MainActivity.this, MovieInfoActivity.class);
             Films chose = ListofFilms.get(pos);
             info.putExtra("Film", chose);

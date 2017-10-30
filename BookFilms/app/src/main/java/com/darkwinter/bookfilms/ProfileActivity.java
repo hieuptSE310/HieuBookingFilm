@@ -44,13 +44,11 @@ public class ProfileActivity extends AppCompatActivity {
         FirebaseUser currentUSer = mAuth.getCurrentUser();
         if(currentUSer!=null){
             mUserReference = database.getReference("Users");
-            //Toast.makeText(ProfileActivity.this, currentUSer.getUid(), Toast.LENGTH_LONG).show();
             final String ID = currentUSer.getUid();
 
             mUserReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    Toast.makeText(ProfileActivity.this, dataSnapshot.toString(), Toast.LENGTH_LONG).show();
                     name = dataSnapshot.child(ID).child("name").getValue().toString();
                     email = dataSnapshot.child(ID).child("email").getValue().toString();
                     DOB = dataSnapshot.child(ID).child("DOB").getValue().toString();
@@ -84,6 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
                 bundle.putString("password", password);
                 updateIntent.putExtra("Bundle", bundle);
                 startActivity(updateIntent);
+                finish();
 
             }
         });

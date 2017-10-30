@@ -54,8 +54,6 @@ public class BookingTicketActivity extends AppCompatActivity {
                 String tmpDate = adapterView.getItemAtPosition(i).toString();
                 loadCinemasFromFirebase(tmpDate);
                 clearTime();
-                //loadSlotFirebase(Cinemas.getSelectedItem().toString(), film.getId(), tmpDate);
-                //loadSeatsFromFirebase();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -68,7 +66,7 @@ public class BookingTicketActivity extends AppCompatActivity {
                 String cinema = adapterView.getItemAtPosition(i).toString();
                 loadSlotFirebase(cinema, film.getId(), Dates.getSelectedItem().toString());
                 notifychange();
-                //loadSeatsFromFirebase();
+
             }
 
             @Override
@@ -79,7 +77,6 @@ public class BookingTicketActivity extends AppCompatActivity {
         Times.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String slot1 =adapterView.getItemAtPosition(i).toString();
                 loadSeatsFromFirebase();
                 clearSeat();
             }
