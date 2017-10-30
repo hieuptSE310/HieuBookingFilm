@@ -6,9 +6,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:label="Dictionary SE61750"
+        android:label="My Movie Booking"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,8 +26,7 @@
             android:theme="@style/AppTheme.ActionBar"/>
         <!--Start Activity activity-->
         <activity android:name=".StartActivity"
-            android:label="Login"
-            android:theme="@style/AppTheme.ActionBar"/>
+            android:label="Login"/>
         <!--Profile activity-->
         <activity android:name=".ProfileActivity"
             android:label="Profile"
