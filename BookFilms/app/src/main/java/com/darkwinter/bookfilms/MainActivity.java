@@ -89,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
             Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         }
+        if(item.getItemId()==R.id.mnRegister){
+            Intent regIntent = new Intent(MainActivity.this, RegisterActivity.class);
+            startActivity(regIntent);
+        }
         return true;
     }
 

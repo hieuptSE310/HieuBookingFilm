@@ -1,9 +1,11 @@
 package com.darkwinter.bookfilms;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText txtEmail;
     private EditText txtPassword;
     private TextView txtRegister;
+    private ProgressDialog loginProgress;
+
 
 
 
@@ -31,13 +35,22 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
+        loginProgress = new ProgressDialog(this, R.style.Theme_MyDialog);
         addControls();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = txtEmail.getText().toString();
                 String pass = txtPassword.getText().toString();
-                signinUser(email, pass);
+                if(!TextUtils.isEmpty(email) || !TextUtils.isEmpty(pass)){
+                    //loginProgress.setProgressStyle(1);
+                    loginProgress.setTitle("Login with email");
+                    loginProgress.setMessage("Please waiting");
+                    loginProgress.setCanceledOnTouchOutside(false);
+                    loginProgress.show();
+
+                    signinUser(email, pass);
+                }
             }
         });
         txtRegister.setOnClickListener(new View.OnClickListener() {
@@ -58,12 +71,14 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            loginProgress.dismiss();
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(" ++++ ", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             callStartScreen();
 
                         } else {
+                            loginProgress.hide();
                             // If sign in fails, display a message to the user.
                             Log.w("+++++++", "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",

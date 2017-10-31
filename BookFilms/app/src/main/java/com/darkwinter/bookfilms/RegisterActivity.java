@@ -1,9 +1,11 @@
 package com.darkwinter.bookfilms;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btnRegister;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
+    private ProgressDialog regProgress;
 
 
     @Override
@@ -35,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
+        regProgress = new ProgressDialog(this, R.style.Theme_MyDialog);
         addControls();
         //btnLogIn = findViewById(R.id.btnLogIn);
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -46,8 +50,15 @@ public class RegisterActivity extends AppCompatActivity {
                 String DOB = txtDOB.getText().toString();
                 String phone = txtPhone.getText().toString();
                 String Zipcode = txtZipCode.getText().toString();
-                
-                registerUser(email, name, pass, DOB, phone, Zipcode);
+
+
+                if(!TextUtils.isEmpty(name) || !TextUtils.isEmpty(pass) || !TextUtils.isEmpty(email)){
+                    regProgress.setTitle("Register User");
+                    regProgress.setMessage("Please waiting");
+                    regProgress.setCanceledOnTouchOutside(false);
+                    regProgress.show();
+                    registerUser(email, name, pass, DOB, phone, Zipcode);
+                }
             }
         });
         
@@ -58,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    regProgress.dismiss();
                     FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
                     String uid = current_user.getUid();
                     databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
@@ -75,6 +87,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class );
                                 startActivity(loginIntent);
                                 finish();
+                            }else {
+                                regProgress.hide();
+
                             }
                         }
                     });
