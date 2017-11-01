@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
+// Sign In method
 
     private void signinUser(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
