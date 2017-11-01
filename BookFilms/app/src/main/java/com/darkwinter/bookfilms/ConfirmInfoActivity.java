@@ -143,6 +143,8 @@ public class ConfirmInfoActivity extends AppCompatActivity {
         myIntent.putExtra("extra", "yes");
         pending_intent = PendingIntent.getBroadcast(ConfirmInfoActivity.this, 0, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pending_intent);
+
+        alarmManager.cancel(pending_intent);
     }
 
 
