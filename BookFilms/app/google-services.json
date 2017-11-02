@@ -199,6 +199,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "661292223902-ph2fdeqv2edmuv12h87b7idmgoke73gq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.darkwinter.bookfilms",
+            "certificate_hash": "ae0fff9f776b59b714cb35e07d60940568125bd5"
+          }
+        },
+        {
           "client_id": "661292223902-jsc8n7lnknlgpv945r5ou5uj1eckg327.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

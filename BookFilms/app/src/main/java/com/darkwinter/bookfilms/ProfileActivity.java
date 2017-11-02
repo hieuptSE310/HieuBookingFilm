@@ -1,94 +1,57 @@
 package com.darkwinter.bookfilms;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
+import model.connectProfileUser;
 public class ProfileActivity extends AppCompatActivity {
-    private TextView txtEmail;
-    private TextView txtName;
-    private TextView txtDOB;
-    private TextView txtPassword;
-    private TextView txtZipCode;
-    private TextView txtPhone;
+    public TextView txtEmail;
+    public TextView txtName;
+    public TextView txtDOB;
+    public TextView txtZipCode;
+    public TextView txtPhone;
     private Button btnUpdate;
-    private FirebaseAuth mAuth;
-    private DatabaseReference mUserReference;
-    private FirebaseDatabase database;
-    private String name;
-    private String email;
-    private String DOB;
-    private String phone;
-    private String zipcode;
-    private String password;
+    public connectProfileUser connectProfileUser = new connectProfileUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         addControls();
-        mAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
-        FirebaseUser currentUSer = mAuth.getCurrentUser();
-        if(currentUSer!=null){
-            mUserReference = database.getReference("Users");
-            final String ID = currentUSer.getUid();
-
-            mUserReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    name = dataSnapshot.child(ID).child("name").getValue().toString();
-                    email = dataSnapshot.child(ID).child("email").getValue().toString();
-                    DOB = dataSnapshot.child(ID).child("DOB").getValue().toString();
-                    phone = dataSnapshot.child(ID).child("Phone number").getValue().toString();
-                    zipcode = dataSnapshot.child(ID).child("CitizenID").getValue().toString();
-                    password = dataSnapshot.child(ID).child("Password").getValue().toString();
-
-                    txtName.setText(name);
-                    txtDOB.setText(DOB);
-                    txtEmail.setText(email);
-                    txtPhone.setText(phone);
-                    txtZipCode.setText(zipcode);
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
+        connectProfileUser.loadCurrentUser(new connectProfileUser.OnLoadedUser() {
             @Override
-            public void onClick(View v) {
-                Intent updateIntent = new Intent(ProfileActivity.this , UpdateProfileActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("name", name);
-                bundle.putString("email", email);
-                bundle.putString("DOB", DOB);
-                bundle.putString("phone", phone);
-                bundle.putString("zipcode", zipcode);
-                bundle.putString("password", password);
-                updateIntent.putExtra("Bundle", bundle);
-                startActivity(updateIntent);
-                finish();
+            public void onLoadedUser(User user) {
+                Log.d("+++++++++", user.getEmail());
+                Log.d("abccccccc", user.toString());
 
+                txtName.setText(user.getName());
+                txtEmail.setText(user.getEmail());
+                txtDOB.setText(user.getDOB());
+                txtPhone.setText(user.getPhone());
+                txtZipCode.setText(user.getZipcode());
+
+                btnUpdate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent updateIntent = new Intent(ProfileActivity.this , UpdateProfileActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("name", txtName.getText().toString());
+                        bundle.putString("email", txtEmail.getText().toString());
+                        bundle.putString("DOB", txtDOB.getText().toString());
+                        bundle.putString("phone", txtPhone.getText().toString());
+                        bundle.putString("zipcode", txtZipCode.getText().toString());
+                        updateIntent.putExtra("Bundle", bundle);
+                        startActivity(updateIntent);
+                        finish();
+                    }
+                });
             }
         });
     }
-
     private void addControls() {
         txtEmail = findViewById(R.id.txtEmail);
         txtName = findViewById(R.id.txtName);

@@ -17,6 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
+import model.ConnectDB;
+
 public class UpdateProfileActivity extends AppCompatActivity {
     private EditText txtEmail;
     private EditText txtName;
@@ -25,20 +27,17 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private EditText txtZipCode;
     private EditText txtPhone;
     private Button btnRegister;
-    private FirebaseAuth mAuth;
-    private DatabaseReference databaseReference;
     private String name;
     private String email;
     private String DOB;
     private String phone;
     private String zipcode;
-    private String password;
+    private ConnectDB connectDB = new ConnectDB();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
-        mAuth = FirebaseAuth.getInstance();
         addControls();
         Intent receiveIntent = getIntent();
         Bundle bundle = receiveIntent.getBundleExtra("Bundle");
@@ -47,7 +46,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
         txtDOB.setText(bundle.getString("DOB"));
         txtPhone.setText(bundle.getString("phone"));
         txtZipCode.setText(bundle.getString("zipcode"));
-        password = bundle.getString("password");
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,30 +54,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 DOB = txtDOB.getText().toString();
                 phone = txtPhone.getText().toString();
                 zipcode = txtZipCode.getText().toString();
-                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                String uid = currentUser.getUid();
-                databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
-                HashMap<String, Object> userMap = new HashMap<>();
-                userMap.put("email", email);
-                userMap.put("name", name);
-                userMap.put("CitizenID", zipcode );
-                userMap.put("DOB", DOB);
-                userMap.put("Phone number", phone);
-                userMap.put("Password", password);
-                databaseReference.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Intent loginIntent = new Intent(UpdateProfileActivity.this, ProfileActivity.class );
-                            startActivity(loginIntent);
-                            finish();
-                        }
-                    }
-                });
+                connectDB.checkUID();
+                connectDB.saveData(email, name, DOB, phone, zipcode, connectDB.curuid);
             }
         });
-
-
     }
     private void addControls() {
         txtEmail = findViewById(R.id.txtEmail);
